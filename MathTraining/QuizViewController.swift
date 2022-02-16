@@ -29,6 +29,13 @@ class QuizViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.（再作成可能なリソースは破棄する。）
     }
+    
+    //
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let resultVC = segue.destination as? ResultViewController {
+            resultVC.result = Double(correct) / Double(total) * 100.0
+        }
+    }
         
     @IBAction func tapped(sender: UIButton) {
         // 正解の判定を行う。
